@@ -34,4 +34,4 @@ medellangdHelp s = [if not (isAlpha y) then ' ' else y | y<-s]
 medellangd :: String -> Double
 medellangd s = fromIntegral((length (unwords(words(medellangdHelp s)))+1) - (length (words (medellangdHelp s)))) / fromIntegral(length (words (medellangdHelp s)))
 
-skyffla s = s
+skyffla s = [s | x <- [1..((length s) - 1)], odd x] ++ skyffla(alla övriga element)
