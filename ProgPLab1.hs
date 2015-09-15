@@ -32,6 +32,16 @@ medellangdHelp s = [if not (isAlpha y) then ' ' else y | y<-s]
 
 --medellangd skriven av Max Bergdahl och Niklas Bergdahl
 medellangd :: String -> Double
-medellangd s = fromIntegral((length (unwords(words(medellangdHelp s)))+1) - (length (words (medellangdHelp s)))) / fromIntegral(length (words (medellangdHelp s)))
+medellangd s = fromIntegral(sum (map length (words (medellangdHelp s)))) / fromIntegral(length (words (medellangdHelp s)))
+--medellangd s = fromIntegral((length (unwords(words(medellangdHelp s)))+1) - (length (words (medellangdHelp s)))) / fromIntegral(length (words (medellangdHelp s)))
 
-skyffla s = [s | x <- [1..((length s) - 1)], odd x] ++ skyffla(alla övriga element)
+
+--skyfflaHalf skriven av Max Bergdahl och Niklas Bergdahl
+skyfflaHalf xs = case drop (1) xs of
+	(y:ys) -> y : skyfflaHalf ys
+	[] -> []
+
+--skyffla skriven av Max Bergdahl och Niklas Bergdahl
+skyffla s
+	| length s >= 2 = [x | x <- skyfflaHalf (head (s):s)] ++ skyffla(skyfflaHalf s)
+	| otherwise = s
