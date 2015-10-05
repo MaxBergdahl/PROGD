@@ -85,7 +85,7 @@ profiles = [molseqs2profile name fam | (name, fam) <- famseqs]
 
 
 -- A few quick tests
-
+   
 test1 = seqdata figur
 
 -- Should return 0.51986038541...
