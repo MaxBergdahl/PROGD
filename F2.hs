@@ -58,5 +58,7 @@ seqDistance (DNA(n, s)) (DNA(m, z))
 seqDistance (PROT(n, s)) (PROT(m, z))
 	| difRatio (PROT(n, s)) (PROT(m, z)) <= 0.94 = ((-19/20) * log(1-20*((difRatio (PROT(n, s)) (PROT(m, z)))/19)))
 	| otherwise = 3.7
+seqDistance (DNA(n, s)) (PROT(m, z)) = error "Can't compare a DNA string with a Protein string"
+seqDistance (PROT(n, s)) (DNA(m, z)) = error "Can't compare a Protein string with a DNA string"
 
 --seqDistnace PROT (n, s) PROT (m, z) = 
